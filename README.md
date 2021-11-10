@@ -1,5 +1,6 @@
 # pyCar
-由01Studio发起的MicroPython开源小车。
+由01Studio发起的MicroPython开源小车。  
+![pyCar](https://github.com/01studio-lab/pyCar/blob/main/docs/manual/media/pyCar.jpg)
 
 ## 项目简介
 Micropython是指使用python做各类嵌入式硬件设备编程。MicroPython发展势头强劲，01Studio一直致力于Python嵌入式编程，特此推出pyCar开源项目，旨在让MicroPython变得更加流行。使用MicroPython，你可以轻松地实现小车的前进、后台、巡线、避障、红外遥控等功能。
