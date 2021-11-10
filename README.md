@@ -48,6 +48,7 @@ Car.light_on() #打开车头灯
 
 ### docs
 pyCar官方说明文档、MicroPython库文档。
+https://pycar.01studio.cc/zh_CN/latest/manual/quickref.html
 
 ### firmware
 pyCar的MicroPython固件。
