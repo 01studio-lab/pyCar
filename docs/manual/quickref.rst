@@ -135,7 +135,21 @@ https://download.01studio.cc/zh_CN/latest/micropython/pyWiFi-ESP32/pyWiFi-ESP32.
 .. method:: CAR.getIR()
 
     返回红外解码按键值。连续按下的情况在返回1次值后会一直返回 'REPEAT' 字符。
-	
+
+
+屏幕显示
+---------------
+.. method:: CAR.screen()
+
+    在屏幕上显示小车的各种状态。可显示的内容有：
+
+    - 指示标志：蓝牙链接、网络链接、红外遥控、车前灯
+    - 行进状态：前进、后退、左转、右转
+    - 数值显示：行驶路程以及超声波测距距离
+
+    上电后显示LOGO画面2秒后进入UI界面，之后每次运行刷新一次屏幕。
+  
+
 WiFi连接
 ----------
 
