@@ -6,10 +6,19 @@ from machine import Pin,PWM,SoftI2C
 from ssd1306 import SSD1306_I2C     #从ssd1306模块中导入SSD1306_I2C子模块
 import framebuf
 import time
-
+from ir_receive import IRrec
 #编码盘计数
 count1 = 0
 count2 = 0
+#遥控器指令表
+IR_FORWARD=48
+IR_BACKWARD=164
+IR_LEFT=16
+IR_RIGHT=180
+IR_STOP=56
+IR_LIGHT_ON=44
+IR_LIGHT_OFF=26
+
 
 class CAR():
     
@@ -53,7 +62,8 @@ class CAR():
         self.t5 = Pin(39, Pin.IN, Pin.PULL_UP)
         
         #红外接收头
-        self.IR = Pin(32, Pin.IN)
+        self.IR = IRrec(32)
+        self.IR.callback(self.getIR)
         
         #屏幕
         self.i2c=SoftI2C(sda=Pin(25), scl=Pin(23))
@@ -308,44 +318,29 @@ class CAR():
         return self.t5.value()
 
     #红外接收解码
-    def getIR(self):
-
-        if (self.IR.value() == 0):
-            count = 0
-            while ((self.IR.value() == 0) and (count < 100)): #9ms
-                count += 1
-                time.sleep_us(100)
-            if(count < 10):
-                return None
-            count = 0
-            while ((self.IR.value() == 1) and (count < 50)): #4.5ms
-                count += 1
-                time.sleep_us(100)
-                
-            idx = 0
-            cnt = 0
-            data = [0,0,0,0]
-            for i in range(0,32):
-                count = 0
-                while ((self.IR.value() == 0) and (count < 10)):    #0.56ms
-                    count += 1
-                    time.sleep_us(100)
-
-                count = 0
-                while ((self.IR.value() == 1) and (count < 20)):   #0: 0.56mx
-                    count += 1                                #1: 1.69ms
-                    time.sleep_us(100)
-
-                if count > 7:
-                    data[idx] |= 1<<cnt
-                if cnt == 7:
-                    cnt = 0
-                    idx += 1
-                else:
-                    cnt += 1
-
-            if data[0]+data[1] == 0xFF and data[2]+data[3] == 0xFF:  #check
-                return data[2]
-            else:
-                return("REPEAT")
-
+    def getIR(self,nec,add,cmd):
+        self.s_red=1
+        if cmd==IR_FORWARD:
+            self.forward()
+            self.screen()
+        elif cmd==IR_BACKWARD:
+            self.backward()
+            self.screen()
+        elif cmd==IR_LEFT:
+            self.turn_left(1)
+            self.screen()
+        elif cmd==IR_RIGHT:
+            self.turn_right(1)
+            self.screen()
+        elif cmd==IR_STOP:
+            self.stop()
+            self.screen()
+        elif cmd==IR_LIGHT_ON:
+            self.light_on()
+            self.screen()
+        elif cmd==IR_LIGHT_OFF:
+            self.light_off()
+            self.screen()
+        time.sleep_ms(50)
+        self.s_red=0
+        self.screen()
