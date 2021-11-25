@@ -15,31 +15,36 @@ print('mac地址为')
 print(aa)
 
 def on_rx(v):
-    print(v)
+    print(v[0])
     print("Receive_data:", str(v))
-    if v==b'\x00':
-        pycar.forward()
-        pycar.screen()
-    elif v==b'\x00\x00':
-        pycar.backward()
-        pycar.screen()
-    elif v==b'\x00\x00\x00':
-        pycar.turn_left(1)
-        pycar.screen()
-    elif v==b'\x00\x00\x00\x00':
-        pycar.turn_right(1)
-        pycar.screen()
-    elif v==b'\x00\x00\x00\x00\x00':
-        pycar.stop()
-        pycar.screen()
-    elif v==b'\x00\x00\x00\x00\x00\x00':
-        pycar.light_on()
-        pycar.screen()
-    elif v==b'\x00\x00\x00\x00\x00\x00\x00':
-        pycar.light_off()
-        pycar.screen()
-    elif v==b'\x08':
-        nongsini
+    if v[0]==33:
+        speed=str(v)[3:-1]
+        print(speed)
+        pycar.setspeed(int(speed))
+    else:
+        if v==b'forward':
+            pycar.forward()
+            pycar.screen()
+        elif v==b'backward':
+            pycar.backward()
+            pycar.screen()
+        elif v==b'left':
+            pycar.turn_left(1)
+            pycar.screen()
+        elif v==b'right':
+            pycar.turn_right(1)
+            pycar.screen()
+        elif v==b'stop':
+            pycar.stop()
+            pycar.screen()
+        elif v==b'lighton':
+            pycar.light_on()
+            pycar.screen()
+        elif v==b'lightoff':
+            pycar.light_off()
+            pycar.screen()
+        elif v==b'stop':
+            nongsini
 
 p.on_write(on_rx)
 
