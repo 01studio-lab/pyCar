@@ -105,7 +105,7 @@ class BLESimplePeripheral:
     def is_connected(self):
         return len(self._connections) > 0
 
-    def _advertise(self, interval_us=500000):
+    def _advertise(self, interval_us=100000):
         print("Starting advertising")
         self._ble.gap_advertise(interval_us, adv_data=self._payload)
 

@@ -50,14 +50,15 @@ def fun(tim):
 
 
 while 1:
+    ds=pycar.getDistance()
+    jo=pycar.getJourney()
     if quittt.value()==0:
         print('quit')
         break
     if p.is_connected():
         pycar.s_blue=1
-        ds=pycar.getDistance()
-        jo=pycar.getJourney()
-        pycar.screen()
         print(ds)
         p.notify(str(ds))
-    utime.sleep_ms(300)
+    pycar.screen()
+    utime.sleep_ms(1000)
+    
