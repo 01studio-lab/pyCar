@@ -32,6 +32,9 @@ class CAR():
         self.M4_P = PWM(Pin(21), freq=1000, duty=0) 
         self.M4_N = PWM(Pin(22), freq=1000, duty=0)
 
+        #电机速度
+        self.duty=1023
+        
         #车灯      
         self.light = Pin(5, Pin.OUT)
 
@@ -118,39 +121,53 @@ class CAR():
             print('screen connect error!')
         
     #前进
+    def setspeed(self,speed):
+        self.duty=speed
+        if self.s_forward==1:
+            self.forward()
+        if self.s_backward==1:
+            self.backward()
+        if self.s_left==1:
+            self.turn_left()
+        if self.s_right==1:
+            self.turn_right()
+        
     def forward(self):
+        speed=self.duty
         self.s_forward=1
         self.s_backward=0
         self.s_left=0
         self.s_right=0
         
-        self.M1_P.duty(1023)
+        self.M1_P.duty(speed)
         self.M1_N.duty(0)    
-        self.M2_P.duty(1023)
+        self.M2_P.duty(speed)
         self.M2_N.duty(0)
-        self.M3_P.duty(1023)
+        self.M3_P.duty(speed)
         self.M3_N.duty(0)
-        self.M4_P.duty(1023)
+        self.M4_P.duty(speed)
         self.M4_N.duty(0)
     
     #后退
     def backward(self):
+        speed=self.duty
         self.s_forward=0
         self.s_backward=1
         self.s_left=0
         self.s_right=0
 
         self.M1_P.duty(0)
-        self.M1_N.duty(1023)    
+        self.M1_N.duty(speed)    
         self.M2_P.duty(0)
-        self.M2_N.duty(1023)
+        self.M2_N.duty(speed)
         self.M3_P.duty(0)
-        self.M3_N.duty(1023)
+        self.M3_N.duty(speed)
         self.M4_P.duty(0)
-        self.M4_N.duty(1023)
+        self.M4_N.duty(speed)
 
     #左转
     def turn_left(self, mode=0):
+        speed=self.duty
         self.s_forward=0
         self.s_backward=0
         self.s_left=1
@@ -160,9 +177,9 @@ class CAR():
         if mode == 0: 
             self.M1_P.duty(0)
             self.M1_N.duty(0)    
-            self.M2_P.duty(1023)
+            self.M2_P.duty(speed)
             self.M2_N.duty(0)
-            self.M3_P.duty(1023)
+            self.M3_P.duty(speed)
             self.M3_N.duty(0)
             self.M4_P.duty(0)
             self.M4_N.duty(0)
@@ -170,39 +187,40 @@ class CAR():
         #大幅度转向
         elif mode ==1:
             self.M1_P.duty(0)
-            self.M1_N.duty(1023)    
-            self.M2_P.duty(1023)
+            self.M1_N.duty(speed)    
+            self.M2_P.duty(speed)
             self.M2_N.duty(0)
-            self.M3_P.duty(1023)
+            self.M3_P.duty(speed)
             self.M3_N.duty(0)
             self.M4_P.duty(0)
-            self.M4_N.duty(1023)
+            self.M4_N.duty(speed)
 
     #右转
-    def turn_right(self, mode=0): 
+    def turn_right(self, mode=0):
+        speed=self.duty
         self.s_forward=0
         self.s_backward=0
         self.s_left=0
         self.s_right=1
         #普通转向
         if mode == 0:
-            self.M1_P.duty(1023)
+            self.M1_P.duty(speed)
             self.M1_N.duty(0)    
             self.M2_P.duty(0)
             self.M2_N.duty(0)
             self.M3_P.duty(0)
             self.M3_N.duty(0)
-            self.M4_P.duty(1023)
+            self.M4_P.duty(speed)
             self.M4_N.duty(0)
         #大幅度转向
         elif mode == 1: 
-            self.M1_P.duty(1023)
+            self.M1_P.duty(speed)
             self.M1_N.duty(0)    
             self.M2_P.duty(0)
-            self.M2_N.duty(1023)
+            self.M2_N.duty(speed)
             self.M3_P.duty(0)
-            self.M3_N.duty(1023)
-            self.M4_P.duty(1023)
+            self.M3_N.duty(speed)
+            self.M4_P.duty(speed)
             self.M4_N.duty(0)
 
     #停止
