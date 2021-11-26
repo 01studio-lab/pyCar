@@ -32,7 +32,7 @@ class CAR():
         self.M4_P = PWM(Pin(21), freq=1000, duty=0) 
         self.M4_N = PWM(Pin(22), freq=1000, duty=0)
 
-        #电机速度
+        #电机速度，默认最大
         self.duty=1023
         
         #车灯      
@@ -77,7 +77,7 @@ class CAR():
         self.s_distance=0
         self.screen()
 
-        
+    #屏幕刷新    
     def screen(self):
         if self.i2c.scan()[0]==0x3c:
             self.oled.fill(0)
@@ -120,7 +120,7 @@ class CAR():
         else:
             print('screen connect error!')
         
-    #前进
+    #调速
     def setspeed(self,speed):
         self.duty=speed
         if self.s_forward==1:
@@ -131,7 +131,7 @@ class CAR():
             self.turn_left()
         if self.s_right==1:
             self.turn_right()
-        
+    #前进    
     def forward(self):
         speed=self.duty
         self.s_forward=1
