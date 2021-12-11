@@ -77,7 +77,7 @@ https://download.01studio.cc/zh_CN/latest/micropython/pyWiFi-ESP32/pyWiFi-ESP32.
 
 .. method:: CAR.light_off()
 
-    打开车头灯。
+    关闭车头灯。
 
 .. method:: CAR.light(value=0)
 
