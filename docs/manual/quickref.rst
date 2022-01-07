@@ -12,7 +12,7 @@ pyCar用户手册
 
 组装pyCar
 ------------
-- 组装教程：https://bbs.01studio.cc/thread/156
+- 组装教程：https://bbs.01studio.cc/thread/230
 
 MicroPython学习
 -----------------
@@ -67,7 +67,54 @@ https://download.01studio.cc/zh_CN/latest/micropython/pyWiFi-ESP32/pyWiFi-ESP32.
 .. method:: CAR.stop()
 
     停止。
+
+
+麦克纳姆轮专用
+---------------
+
+.. method:: CAR.up()
+
+    前移。
+
+.. method:: CAR.down()
+
+    后移。
+
+.. method:: CAR.left()
+
+    左移。	
+
+.. method:: CAR.right()
+
+    右移。
+
+.. method:: CAR.up_left()
+
+    左前移。
+
+.. method:: CAR.up_right()
+
+    右前移。
+
+.. method:: CAR.down_left()
+
+    左后移。
+
+.. method:: CAR.down_right()
+
+    右后移。
+
+.. method:: CAR.clockwise()
+
+    顺时针旋转。
+
+.. method:: CAR.Counterclockwise()
+
+    逆时针旋转。	
 	
+.. method:: CAR.stop()
+
+    停止。	
 	
 车头灯
 ---------

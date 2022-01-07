@@ -60,7 +60,8 @@ pyCar的MicroPython固件。
 更新日志。
 
 ## 贡献用户
-【CaptainJacky】 pyCar项目发起人，负责硬件和MicroPython软件设计。
+【CaptainJacky】 pyCar项目发起人，负责硬件和MicroPython软件设计。    
+    
 【jd3096】 GUI，蓝牙控制。
 
 欢迎参与项目贡献！

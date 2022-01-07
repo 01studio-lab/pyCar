@@ -237,7 +237,131 @@ class CAR():
         self.M3_N.duty(0)
         self.M4_P.duty(0)
         self.M4_N.duty(0)
+
+    #####################
+    # Mecanum麦克纳母轮
+    #####################   
+    def up(self): #上移
+        
+        speed=self.duty        
+        self.M1_P.duty(speed)
+        self.M1_N.duty(0)    
+        self.M2_P.duty(speed)
+        self.M2_N.duty(0)
+        self.M3_P.duty(speed)
+        self.M3_N.duty(0)
+        self.M4_P.duty(speed)
+        self.M4_N.duty(0)
+        
+    def down(self): #下移
+        
+        speed=self.duty 
+        self.M1_P.duty(0)
+        self.M1_N.duty(speed)    
+        self.M2_P.duty(0)
+        self.M2_N.duty(speed)
+        self.M3_P.duty(0)
+        self.M3_N.duty(speed)
+        self.M4_P.duty(0)
+        self.M4_N.duty(speed)
+
+    def left(self): #左移
+        
+        speed=self.duty 
+        self.M1_P.duty(0)
+        self.M1_N.duty(speed)    
+        self.M2_P.duty(speed)
+        self.M2_N.duty(0)
+        self.M3_P.duty(0)
+        self.M3_N.duty(speed)
+        self.M4_P.duty(speed)
+        self.M4_N.duty(0)
+
+    def right(self): #右移
+        
+        speed=self.duty 
+        self.M1_P.duty(speed)
+        self.M1_N.duty(0)    
+        self.M2_P.duty(0)
+        self.M2_N.duty(speed)
+        self.M3_P.duty(speed)
+        self.M3_N.duty(0)
+        self.M4_P.duty(0)
+        self.M4_N.duty(speed)
+
+    def up_left(self): #左前移
+        
+        speed=self.duty 
+        self.M1_P.duty(0)
+        self.M1_N.duty(0)    
+        self.M2_P.duty(speed)
+        self.M2_N.duty(0)
+        self.M3_P.duty(0)
+        self.M3_N.duty(0)
+        self.M4_P.duty(speed)
+        self.M4_N.duty(0)
+
+    def up_right(self): #右前移
+        
+        speed=self.duty 
+        self.M1_P.duty(speed)
+        self.M1_N.duty(0)    
+        self.M2_P.duty(0)
+        self.M2_N.duty(0)
+        self.M3_P.duty(speed)
+        self.M3_N.duty(0)
+        self.M4_P.duty(0)
+        self.M4_N.duty(0)
+
+    def down_left(self): #左后移
+        
+        speed=self.duty 
+        self.M1_P.duty(0)
+        self.M1_N.duty(speed)    
+        self.M2_P.duty(0)
+        self.M2_N.duty(0)
+        self.M3_P.duty(0)
+        self.M3_N.duty(speed)
+        self.M4_P.duty(0)
+        self.M4_N.duty(0)
     
+    def down_right(self): #右后移
+        
+        speed=self.duty 
+        self.M1_P.duty(0)
+        self.M1_N.duty(0)    
+        self.M2_P.duty(0)
+        self.M2_N.duty(speed)
+        self.M3_P.duty(0)
+        self.M3_N.duty(0)
+        self.M4_P.duty(0)
+        self.M4_N.duty(speed)
+
+    def clockwise(self): #顺时针旋转
+        
+        speed=self.duty 
+        self.M1_P.duty(speed)
+        self.M1_N.duty(0)    
+        self.M2_P.duty(0)
+        self.M2_N.duty(speed)
+        self.M3_P.duty(0)
+        self.M3_N.duty(speed)
+        self.M4_P.duty(speed)
+        self.M4_N.duty(0)
+
+    def Counterclockwise(self): #逆时针旋转
+        
+        speed=self.duty 
+        self.M1_P.duty(0)
+        self.M1_N.duty(speed)    
+        self.M2_P.duty(speed)
+        self.M2_N.duty(0)
+        self.M3_P.duty(speed)
+        self.M3_N.duty(0)
+        self.M4_P.duty(0)
+        self.M4_N.duty(speed)
+    
+
     #打开车头灯
     def light_on(self):
         
