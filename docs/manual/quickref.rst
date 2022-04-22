@@ -14,11 +14,11 @@ pyCar用户手册
 ------------
 - 组装教程：https://bbs.01studio.cc/thread/230
 
-MicroPython学习
+教程资料
 -----------------
-pyCar是基于MicroPython实现，如果你没使用过MicroPython，请下载教程先学习相关知识:
+pyCar是基于MicroPython实现，01Studio提供完整的入门教程和代码相关资料:
 
-https://download.01studio.cc/zh_CN/latest/micropython/pyWiFi-ESP32/pyWiFi-ESP32.html
+https://download.01studio.cc/zh_CN/latest/project/pyCar/pyCar.html
 
 
 构造函数
